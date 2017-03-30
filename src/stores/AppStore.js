@@ -1,3 +1,7 @@
+// Manage the state for the entire application from within our Store.
+// Very easy to SCALE and add more React components because of this
+// centralized space to manage everything.
+
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 import {EventEmitter} from 'events';
@@ -6,6 +10,10 @@ const CHANGE_EVENT = 'change';
 
 // usually with state variables you start off with an underscore:
 let _contacts = [];
+
+function setContacts(contacts) {
+    _contacts = contacts;    
+}
 
 class AppStoreClass extends EventEmitter {
     
@@ -32,7 +40,11 @@ const AppStore = new AppStoreClass();
 
 AppStore.dispatchToken = AppDispatcher.register(action => {
     switch(action.actionType) {
-        
+        case AppConstants.RECEIVE_CONTACTS:
+            setContacts(action.contacts);
+            AppStore.emitChange();
+            break
+            default:
     }
 });
 
