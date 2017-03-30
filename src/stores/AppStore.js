@@ -1,6 +1,9 @@
-// Manage the state for the entire application from within our Store.
-// Very easy to SCALE and add more React components because of this
-// centralized space to manage everything.
+/* Manage the state for the entire application from within our Store.
+   Very easy to SCALE and add more React components because of this
+   centralized space to manage everything. A different data source can be 
+   switched out from ContactAPI to use a different backend without affecting
+   any of our Flux architecture.
+ */
 
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
