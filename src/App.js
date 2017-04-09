@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header'; // easy to include the Navbar Bootstrap component!
 import Contacts from './components/Contact';
+import AddContact from './components/AddContact';
 // pretty much every element in bootstrap has a component in the react-bootstrap module!
 import {Grid, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,7 @@ class App extends Component {
         <Grid>
           <Row>
             <Col xs={12} md={12} lg={12}>
+              <AddContact />
               <Contacts />
             </Col>
           </Row>
