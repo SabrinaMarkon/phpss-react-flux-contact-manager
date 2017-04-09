@@ -14,13 +14,22 @@ const CHANGE_EVENT = 'change';
 // usually with state variables you start off with an underscore:
 let _contacts = [];
 
+// gets and sorts all Contacts (plural)
 function setContacts(contacts) {
     _contacts = contacts.sort(SortByName);    
 }
 
+// saves a new Contact
 function setContact(contact) {
     _contacts.push(contact);
     setContacts(_contacts);
+}
+
+// deletes a Contact
+function deleteContact(id) {
+    console.log('deleting contact ' + id);
+    let index = _contacts.findIndex(x => x.id === id);
+    _contacts.splice(index, 1);
 }
 
 function SortByName(a, b) {
@@ -54,23 +63,38 @@ const AppStore = new AppStoreClass();
 
 AppStore.dispatchToken = AppDispatcher.register(action => {
     switch(action.actionType) {
+        
         case AppConstants.RECEIVE_CONTACTS:
             setContacts(action.contacts);
             AppStore.emitChange();
             break
+            
         case AppConstants.RECEIVE_CONTACTS_ERROR:
             alert(action.message);
             AppStore.emitChange();
-            break   
+            break
+            
         case AppConstants.RECEIVE_CONTACT:
             setContact(action.contact);
             AppStore.emitChange();
             break
+            
         case AppConstants.RECEIVE_CONTACT_ERROR:
             alert(action.message);
             AppStore.emitChange();
-            break             
-            default:
+            break
+            
+        case AppConstants.DELETE_CONTACT:
+            deleteContact(action.id);
+            AppStore.emitChange();
+            break
+            
+        case AppConstants.DELETE_CONTACT_ERROR:
+            alert(action.message);
+            AppStore.emitChange();
+            break  
+            
+        default:
     }
 });
 
