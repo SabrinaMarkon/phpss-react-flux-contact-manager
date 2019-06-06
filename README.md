@@ -1,4 +1,4 @@
-phpss-react-flux-contact-manager
+react-flux-contact-manager
 
 A simple contact manager app built with React and Flux.
 
