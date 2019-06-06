@@ -2,10 +2,6 @@ phpss-react-flux-contact-manager
 
 A simple contact manager app built with React and Flux.
 
-Demo: http://phpss-react-flux-contact-manager-sabrinamarkon.c9users.io
-
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
-
 --------------
 
 Sabrina Notes:
